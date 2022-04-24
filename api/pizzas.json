@@ -29,7 +29,7 @@
   },
   {
     "name": "Pizza with Spinache",
-    "price": "12.5",
+    "price": 12.5,
     "imageUrl": "./images/saundarya-srinivasan-60nzTP7_hMQ-unsplash.jpg",
     "imageCredit": "Photo by Saundarya Srinivasan on Unsplash",
     "extras": ["cheese", "tomatoes", "mushrooms"]

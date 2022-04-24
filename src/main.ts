@@ -1,5 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/site.css';
+import { extraIngredientsSchema, pizzaArraySchema } from './schemas';
 import { ExtraIngredients, ItemOrdered, Pizza, PizzaArray } from './types';
 
 const formatCurrency = new Intl.NumberFormat('nl-NL', {
@@ -156,12 +157,12 @@ function checkout(amount: number, account: number) {
 async function loadPizzas(): Promise<PizzaArray> {
   const rsp = await fetch('/api/pizzas.json');
   const data = await rsp.json();
-  return data;
+  return pizzaArraySchema.parse(data);
 }
 async function loadExtras(): Promise<ExtraIngredients> {
   const rsp = await fetch('/api/extra-ingredients.json');
   const data = await rsp.json();
-  return data;
+  return extraIngredientsSchema.parse(data);
 }
 
 async function init() {
