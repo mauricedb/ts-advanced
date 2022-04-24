@@ -45,7 +45,7 @@ function addPizzaToOrder(e: SubmitEvent) {
   order.push(itemOrdered);
 
   itemOrdered.extras.forEach((extra) => {
-    if ((extra.price = 1)) {
+    if (extra.price === 1) {
       // console.log(`${extra.name} has a price of € 1`);
     }
   });
@@ -90,7 +90,7 @@ function renderOrder() {
   renderOrderTotal();
 }
 
-function renderMenu(pizzas: Pizza[], extras: ExtraIngredients) {
+function renderMenu(pizzas: PizzaArray, extras: ExtraIngredients) {
   extraIngredients = extras;
 
   const main = document.getElementById('menu');

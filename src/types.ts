@@ -5,13 +5,13 @@ import {
   pizzaSchema,
 } from './schemas';
 
-export type Pizza = z.infer<typeof pizzaSchema>;
+export type Pizza = Readonly<z.infer<typeof pizzaSchema>>;
 
-export type PizzaArray = Pizza[];
+export type PizzaArray = ReadonlyArray<Pizza>;
 
-export type ExtraIngredient = z.infer<typeof extraIngredientSchema>;
+export type ExtraIngredient = Readonly<z.infer<typeof extraIngredientSchema>>;
 
-export type ExtraIngredients = z.infer<typeof extraIngredientsSchema>;
+export type ExtraIngredients = Readonly<z.infer<typeof extraIngredientsSchema>>;
 
 export interface ItemOrdered {
   name: string;
