@@ -25,6 +25,11 @@ export type ExtraIngredients = DeepReadonly<
 //   extras: ExtraIngredient[];
 // };
 
-export type ItemOrdered = Pick<Pizza, 'name' | 'price'> & {
-  extras: ExtraIngredient[];
-};
+// Taken from https://effectivetypescript.com/2022/02/25/gentips-4-display/
+type Resolve<T> = T extends Function ? T : { [K in keyof T]: T[K] };
+
+export type ItemOrdered = Resolve<
+  Pick<Pizza, 'name' | 'price'> & {
+    readonly extras: ExtraIngredient[];
+  }
+>;
