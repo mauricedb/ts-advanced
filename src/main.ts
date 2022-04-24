@@ -25,7 +25,10 @@ function addPizzaToOrder(e: SubmitEvent) {
   const extras = formElements
     .filter((element) => element.type === 'checkbox' && element.checked)
     .map((element) => element.value)
-    .map((name) => extraIngredients[name]);
+    .map((name) => {
+      const extra = extraIngredients[name];
+      return extra ?? { name, price: 0 };
+    });
 
   const price = extras.reduce(
     (sum, extraIngredient) => sum + extraIngredient.price,
@@ -49,14 +52,13 @@ function addPizzaToOrder(e: SubmitEvent) {
   renderOrder();
 }
 
-function renderOrderTotal(recalculate: boolean) {
+function renderOrderTotal() {
   const totalPriceEl = document.getElementById('order-total');
   const totalPrice = order.reduce((sum, item) => sum + item.price, 0);
   totalPriceEl!.innerHTML = formatCurrency(totalPrice);
 }
 
 function renderOrder() {
-  const recalculate = true;
   const orderEl = document.getElementById('order')!;
   orderEl.textContent = order.length ? '' : 'No items in the order yet';
 
@@ -84,7 +86,7 @@ function renderOrder() {
     orderEl.appendChild(article);
   }
 
-  renderOrderTotal(recalculate);
+  renderOrderTotal();
 }
 
 function renderMenu(pizzas: Pizza[], extras: ExtraIngredients) {
@@ -96,7 +98,7 @@ function renderMenu(pizzas: Pizza[], extras: ExtraIngredients) {
     const extraToppings = pizza.extras
       .map((key) => {
         const id = crypto.randomUUID();
-        const extraTopping = extras[key];
+        const extraTopping = extras[key] ?? { name: key, price: 0 };
 
         return `
 <div class="form-check">
