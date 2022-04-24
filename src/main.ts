@@ -16,6 +16,10 @@ function addPizzaToOrder(e: SubmitEvent) {
 
   const form = e.target as HTMLFormElement;
   const pizza = formToPizzaMap.get(form);
+
+  if (!pizza) {
+    throw new Error('Could not find pizza');
+  }
   const formElements = Array.from(form.elements) as HTMLInputElement[];
 
   const extras = formElements
@@ -48,12 +52,12 @@ function addPizzaToOrder(e: SubmitEvent) {
 function renderOrderTotal(recalculate: boolean) {
   const totalPriceEl = document.getElementById('order-total');
   const totalPrice = order.reduce((sum, item) => sum + item.price, 0);
-  totalPriceEl.innerHTML = formatCurrency(totalPrice);
+  totalPriceEl!.innerHTML = formatCurrency(totalPrice);
 }
 
 function renderOrder() {
   const recalculate = true;
-  const orderEl = document.getElementById('order');
+  const orderEl = document.getElementById('order')!;
   orderEl.textContent = order.length ? '' : 'No items in the order yet';
 
   for (const pizza of order) {
@@ -135,7 +139,7 @@ function renderMenu(pizzas: Pizza[], extras: ExtraIngredients) {
 
     formToPizzaMap.set(pizzaForm, pizza);
 
-    main.appendChild(pizzaForm);
+    main!.appendChild(pizzaForm);
   }
 }
 
