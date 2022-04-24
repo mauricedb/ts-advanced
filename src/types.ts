@@ -21,8 +21,10 @@ export type ExtraIngredients = DeepReadonly<
   z.infer<typeof extraIngredientsSchema>
 >;
 
-export interface ItemOrdered {
-  name: Pizza['name'];
-  price: Pizza['price'];
+// export type ItemOrdered = Omit<Pizza, 'imageUrl' | 'imageCredit' | 'extras'> & {
+//   extras: ExtraIngredient[];
+// };
+
+export type ItemOrdered = Pick<Pizza, 'name' | 'price'> & {
   extras: ExtraIngredient[];
-}
+};
