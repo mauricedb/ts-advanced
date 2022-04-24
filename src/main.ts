@@ -166,17 +166,30 @@ async function loadExtras(): Promise<ExtraIngredients> {
 }
 
 async function init() {
-  renderOrder();
-  const pizzasPromise = loadPizzas();
-  const extrasPromise = loadExtras();
-  renderMenu(await pizzasPromise, await extrasPromise);
+  try {
+    renderOrder();
+    const pizzasPromise = loadPizzas();
+    const extrasPromise = loadExtras();
+    renderMenu(await pizzasPromise, await extrasPromise);
 
-  document.getElementById('checkout-button')?.addEventListener('click', () => {
-    const account = 1234567890;
-    const amount = order.reduce((sum, item) => sum + item.price, 0);
+    document
+      .getElementById('checkout-button')
+      ?.addEventListener('click', () => {
+        const account = 1234567890;
+        const amount = order.reduce((sum, item) => sum + item.price, 0);
 
-    checkout(account, amount);
-  });
+        checkout(account, amount);
+      });
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(
+        `%cError loading data: ${error.name} - ${error.message}`,
+        'font-weight: bold; font-size: 1.5rem;'
+      );
+    } else {
+      console.error(error);
+    }
+  }
 }
 
 document.getElementById('menu')?.addEventListener('submit', addPizzaToOrder);
