@@ -5,13 +5,21 @@ import {
   pizzaSchema,
 } from './schemas';
 
-export type Pizza = Readonly<z.infer<typeof pizzaSchema>>;
+type DeepReadonly<T> = {
+  readonly [P in keyof T]: DeepReadonly<T[P]>;
+};
 
-export type PizzaArray = ReadonlyArray<Pizza>;
+export type Pizza = DeepReadonly<z.infer<typeof pizzaSchema>>;
 
-export type ExtraIngredient = Readonly<z.infer<typeof extraIngredientSchema>>;
+export type PizzaArray = DeepReadonly<Pizza[]>;
 
-export type ExtraIngredients = Readonly<z.infer<typeof extraIngredientsSchema>>;
+export type ExtraIngredient = DeepReadonly<
+  z.infer<typeof extraIngredientSchema>
+>;
+
+export type ExtraIngredients = DeepReadonly<
+  z.infer<typeof extraIngredientsSchema>
+>;
 
 export interface ItemOrdered {
   name: string;
