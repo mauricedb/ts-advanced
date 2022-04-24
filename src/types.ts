@@ -22,7 +22,7 @@ export type ExtraIngredients = DeepReadonly<
 >;
 
 export interface ItemOrdered {
-  name: string;
-  price: number;
+  name: Pizza['name'];
+  price: Pizza['price'];
   extras: ExtraIngredient[];
 }
