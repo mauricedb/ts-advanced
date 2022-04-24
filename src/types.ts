@@ -1,20 +1,17 @@
-export interface Pizza {
-  name: string;
-  price: number;
-  imageUrl: string;
-  imageCredit: string;
-  extras: string[];
-}
+import { z } from 'zod';
+import {
+  extraIngredientSchema,
+  extraIngredientsSchema,
+  pizzaSchema,
+} from './schemas';
+
+export type Pizza = z.infer<typeof pizzaSchema>;
 
 export type PizzaArray = Pizza[];
-export interface ExtraIngredients {
-  [key: string]: ExtraIngredient;
-}
 
-export interface ExtraIngredient {
-  name: string;
-  price: number;
-}
+export type ExtraIngredient = z.infer<typeof extraIngredientSchema>;
+
+export type ExtraIngredients = z.infer<typeof extraIngredientsSchema>;
 
 export interface ItemOrdered {
   name: string;
