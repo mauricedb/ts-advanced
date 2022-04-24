@@ -33,3 +33,12 @@ export type ItemOrdered = Resolve<
     readonly extras: ExtraIngredient[];
   }
 >;
+
+declare const _type: unique symbol;
+
+type Opaque<A, B> = A & {
+  readonly [_type]: B;
+};
+
+export type Amount = Opaque<number, 'Amount'>;
+export type Account = Opaque<number, 'Account'>;

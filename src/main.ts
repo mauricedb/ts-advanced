@@ -1,7 +1,14 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/site.css';
 import { extraIngredientsSchema, pizzaArraySchema } from './schemas';
-import { ExtraIngredients, ItemOrdered, Pizza, PizzaArray } from './types';
+import {
+  Account,
+  Amount,
+  ExtraIngredients,
+  ItemOrdered,
+  Pizza,
+  PizzaArray,
+} from './types';
 
 const formatCurrency = new Intl.NumberFormat('nl-NL', {
   style: 'currency',
@@ -146,7 +153,7 @@ function renderMenu(pizzas: PizzaArray, extras: ExtraIngredients) {
   }
 }
 
-function checkout(amount: number, account: number) {
+function checkout(amount: Amount, account: Account) {
   document.getElementById('checkout-amount')!.innerText =
     formatCurrency(amount);
   document.getElementById('checkout-account')!.innerText =
@@ -175,10 +182,13 @@ async function init() {
     document
       .getElementById('checkout-button')
       ?.addEventListener('click', () => {
-        const account = 1234567890;
-        const amount = order.reduce((sum, item) => sum + item.price, 0);
+        const account = 1234567890 as Account;
+        const amount = order.reduce(
+          (sum, item) => sum + item.price,
+          0
+        ) as Amount;
 
-        checkout(account, amount);
+        checkout(amount, account);
       });
   } catch (error) {
     if (error instanceof Error) {
