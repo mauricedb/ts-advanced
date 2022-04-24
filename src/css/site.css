@@ -1,0 +1,8 @@
+dialog {
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.5);
+}

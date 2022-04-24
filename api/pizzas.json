@@ -1,0 +1,37 @@
+[
+  {
+    "name": "Pepperoni Pizza",
+    "price": 12.5,
+    "imageUrl": "./images/fernando-andrade-_P76trHTWDE-unsplash.jpg",
+    "imageCredit": "Photo by Fernando Andrade on Unsplash",
+    "extras": ["cheese", "pepperoni"]
+  },
+  {
+    "name": "Green and red bell pepper and cheese",
+    "price": 14,
+    "imageUrl": "./images/foad-roshan-Y6OgisiGBjM-unsplash.jpg",
+    "imageCredit": "Photo by Foad Roshan on Unsplash",
+    "extras": ["cheese", "pepperoni", "peppers"]
+  },
+  {
+    "name": "Pizza with Olives",
+    "price": 13.5,
+    "imageUrl": "./images/rahul-upadhyay-yDKHJxfiWDk-unsplash.jpg",
+    "imageCredit": "Photo by Rahul Upadhyay on Unsplash",
+    "extras": ["cheese", "tomatoes", "olives"]
+  },
+  {
+    "name": "Pizza Tomatoes",
+    "price": 10,
+    "imageUrl": "./images/saahil-khatkhate-kfDsMDyX1K0-unsplash.jpg",
+    "imageCredit": "Photo by Saahil Khatkhate on Unsplash",
+    "extras": ["cheese", "tomatoes"]
+  },
+  {
+    "name": "Pizza with Spinache",
+    "price": "12.5",
+    "imageUrl": "./images/saundarya-srinivasan-60nzTP7_hMQ-unsplash.jpg",
+    "imageCredit": "Photo by Saundarya Srinivasan on Unsplash",
+    "extras": ["cheese", "tomatoes", "mushrooms"]
+  }
+]

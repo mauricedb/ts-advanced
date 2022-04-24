@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pizza di Maurizio</title>
+  </head>
+  <body class="container">
+    <header>
+      <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+          <h1>Pizza di Maurizio</h1>
+        </div>
+      </nav>
+    </header>
+    <div class="row">
+      <main class="col-md-6">
+        <h2>Our menu</h2>
+        <div id="menu"></div>
+      </main>
+      <aside class="col-md-6">
+        <h2>Your order</h2>
+        <div id="order" class="list-group mb-5"></div>
+        <h2>Order total: <span id="order-total"></span></h2>
+        <button id="checkout-button" class="btn btn-primary mt-4">
+          Checkout
+        </button>
+      </aside>
+    </div>
+    <footer class="my-5">
+      <p class="text-center text-muted">© ABL - The Problem Solver 2022</p>
+    </footer>
+    <dialog id="checkout-dialog">
+      <form method="dialog">
+        <div class="modal-header">
+          <h5 class="modal-title">Checkout</h5>
+        </div>
+        <div class="modal-body">
+          <p>
+            Paying <span id="checkout-amount">€ 0,00</span> from account
+            <span id="checkout-account">12345</span>
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button value="pay" class="btn btn-primary">Pay</button>
+          <button value="close" class="btn btn-secondary">Close</button>
+        </div>
+      </form>
+    </dialog>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
