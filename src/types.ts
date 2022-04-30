@@ -42,3 +42,7 @@ type Opaque<A, B> = A & {
 
 export type Amount = Opaque<number, 'Amount'>;
 export type Account = Opaque<number, 'Account'>;
+
+export function isAccount(value: unknown): value is Account {
+  return typeof value === 'number' && value.toString().length === 10;
+}

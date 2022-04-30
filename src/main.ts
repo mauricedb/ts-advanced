@@ -5,6 +5,7 @@ import {
   Account,
   Amount,
   ExtraIngredients,
+  isAccount,
   ItemOrdered,
   Pizza,
   PizzaArray,
@@ -182,13 +183,17 @@ async function init() {
     document
       .getElementById('checkout-button')
       ?.addEventListener('click', () => {
-        const account = 1234567890 as Account;
+        const account = 1234567890;
         const amount = order.reduce(
           (sum, item) => sum + item.price,
           0
         ) as Amount;
 
-        checkout(amount, account);
+        if (isAccount(account)) {
+          checkout(amount, account);
+        } else {
+          throw new Error('Account is not valid');
+        }
       });
   } catch (error) {
     if (error instanceof Error) {
