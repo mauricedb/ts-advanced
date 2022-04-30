@@ -46,3 +46,15 @@ export type Account = Opaque<number, 'Account'>;
 export function isAccount(value: unknown): value is Account {
   return typeof value === 'number' && value.toString().length === 10;
 }
+
+export function assertAccount(value: unknown): asserts value is Account {
+  if (!isAccount(value)) {
+    throw new Error(`Expected account, got ${value}`);
+  }
+}
+
+export function assertAmount(value: unknown): asserts value is Amount {
+  if (typeof value !== 'number') {
+    throw new Error(`Expected amount, got ${value}`);
+  }
+}

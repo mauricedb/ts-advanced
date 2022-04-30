@@ -4,6 +4,8 @@ import { extraIngredientsSchema, pizzaArraySchema } from './schemas';
 import {
   Account,
   Amount,
+  assertAccount,
+  assertAmount,
   ExtraIngredients,
   isAccount,
   ItemOrdered,
@@ -184,16 +186,12 @@ async function init() {
       .getElementById('checkout-button')
       ?.addEventListener('click', () => {
         const account = 1234567890;
-        const amount = order.reduce(
-          (sum, item) => sum + item.price,
-          0
-        ) as Amount;
+        const amount = order.reduce((sum, item) => sum + item.price, 0);
 
-        if (isAccount(account)) {
-          checkout(amount, account);
-        } else {
-          throw new Error('Account is not valid');
-        }
+        assertAmount(amount);
+        assertAccount(account);
+
+        checkout(amount, account);
       });
   } catch (error) {
     if (error instanceof Error) {
